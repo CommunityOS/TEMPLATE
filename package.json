@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "pages:dev": "wrangler pages dev --compatibility-date=2024-02-08 -- astro dev",
-    "pages:deploy": "astro build && wrangler pages deploy ./dist"
+    "pages:deploy": "astro build && wrangler pages deploy ./dist",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",
@@ -38,10 +39,16 @@
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.4",
     "graphql-config": "^5.0.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "wrangler": "^3.28.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,astro}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,astro,css,md}": "prettier --write"
   }
 }
